@@ -22,7 +22,7 @@ export const metadata = {
   title: "DevFlow",
   description: "enter description",
   icons: {
-    icon: "/assests/images/site-logo.svg",
+    icon: "/assets/images/site-logo.svg",
   },
 };
 
