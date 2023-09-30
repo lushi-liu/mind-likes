@@ -50,3 +50,7 @@ export interface GetTopInteractedTagsParams {
   userId: string;
   limit?: number;
 }
+
+export interface GetQuestionByIdParams {
+  questionId: string;
+}
