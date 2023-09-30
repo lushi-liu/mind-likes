@@ -38,3 +38,15 @@ export interface UpdateUserParams {
 export interface DeleteUserParams {
   clerkId: string;
 }
+
+export interface GetAllUsersParams {
+  page?: number;
+  pageSize?: number;
+  filer?: string;
+  searchQuery?: string;
+}
+
+export interface GetTopInteractedTagsParams {
+  userId: string;
+  limit?: number;
+}
