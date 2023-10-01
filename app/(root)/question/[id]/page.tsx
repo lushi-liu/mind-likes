@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Metric from "@/components/shared/Metric";
 import { formatNumber, getTimestamp } from "@/lib/utils";
+import ParseHTML from "@/components/shared/ParseHTML";
 
 const page = async ({ params, searchParams }) => {
   const result = await getQuestionById({ questionId: params.id });
@@ -27,34 +28,35 @@ const page = async ({ params, searchParams }) => {
             </p>
           </Link>
           <div className="flex justify-end">vote</div>
-          <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
-            {result.title}
-          </h2>
-        </div>
-        <div className="mb-8 mt-5 flex flex-wrap gap-4">
-          <Metric
-            imgUrl="/assets/icons/clock.svg"
-            alt="upvotes"
-            value={`asked ${getTimestamp(result.createdAt)}`}
-            title="Asked"
-            textStyles="small-medium text-dark400_light800"
-          />
-          <Metric
-            imgUrl="/assets/icons/message.svg"
-            alt="upvotes"
-            value={formatNumber(result.answers.length)}
-            title="Answers"
-            textStyles="small-medium text-dark400_light800"
-          />
-          <Metric
-            imgUrl="/assets/icons/eye.svg"
-            alt="upvotes"
-            value={formatNumber(result.views)}
-            title="Views"
-            textStyles="small-medium text-dark400_light800"
-          />
         </div>
       </div>
+      <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
+        {result.title}
+      </h2>
+      <div className="mb-8 mt-5 flex flex-wrap gap-4">
+        <Metric
+          imgUrl="/assets/icons/clock.svg"
+          alt="upvotes"
+          value={`asked ${getTimestamp(result.createdAt)}`}
+          title="Asked"
+          textStyles="small-medium text-dark400_light800"
+        />
+        <Metric
+          imgUrl="/assets/icons/message.svg"
+          alt="upvotes"
+          value={formatNumber(result.answers.length)}
+          title="Answers"
+          textStyles="small-medium text-dark400_light800"
+        />
+        <Metric
+          imgUrl="/assets/icons/eye.svg"
+          alt="upvotes"
+          value={formatNumber(result.views)}
+          title="Views"
+          textStyles="small-medium text-dark400_light800"
+        />
+      </div>
+      <ParseHTML data={result.content} />
     </>
   );
 };
