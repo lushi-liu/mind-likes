@@ -1,0 +1,44 @@
+"use server";
+
+import User from "@/database/user.model";
+import { connectToDatabase } from "../mongoose";
+import { GetTopInteractedTagsParams } from "./shared.types";
+import Tag from "@/database/tag.model";
+
+export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
+  try {
+    connectToDatabase();
+
+    const { userId } = params;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    // group the tags
+
+    return [
+      { _id: "1", name: "Css" },
+      { _id: "2", name: "Html" },
+      { _id: "3", name: "Java" },
+    ];
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function getAllTags(params: getAllTagsParams) {
+  try {
+    connectToDatabase();
+
+    const tags = await Tag.find({});
+
+    return { tags };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
