@@ -55,6 +55,19 @@ export interface GetQuestionByIdParams {
   questionId: string;
 }
 
+export interface QuestionVoteParams {
+  questionId: string;
+  userId: string;
+  hasUpvoted: boolean;
+  hasDownvoted: boolean;
+  path: string;
+}
+
+export interface DeleteQuestionParams {
+  questionId: string;
+  path: string;
+}
+
 export interface CreateAnswerParams {
   content: string;
   author: string;
