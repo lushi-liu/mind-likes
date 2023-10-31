@@ -81,3 +81,11 @@ export interface GetAnswersParams {
   page?: number;
   pageSize?: number;
 }
+
+export interface AnswerVoteParams {
+  answerId: string;
+  userId: string;
+  hasUpvoted: boolean;
+  hasDownvoted: boolean;
+  path: string;
+}

@@ -8,6 +8,7 @@ import {
   upvoteQuestion,
 } from "@/lib/actions/question.action";
 import { usePathname, useRouter } from "next/navigation";
+import { downvoteAnswer, upvoteAnswer } from "@/lib/actions/answer.action";
 
 interface Props {
   type: string;
@@ -48,13 +49,13 @@ const Votes = ({
           path: pathname,
         });
       } else if (type === "Answer") {
-        // await upvoteAnswer({
-        //     questionId: JSON.parse(itemId),
-        //     userId: JSON.parse(userId),
-        //     hasUpvoted,
-        //     hasDownvoted,
-        //     path: pathname,
-        //   });
+        await upvoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasUpvoted,
+          hasDownvoted,
+          path: pathname,
+        });
       }
       return;
     }
@@ -68,13 +69,13 @@ const Votes = ({
           path: pathname,
         });
       } else if (type === "Answer") {
-        // await downvoteAnswer({
-        //     questionId: JSON.parse(itemId),
-        //     userId: JSON.parse(userId),
-        //     hasUpvoted,
-        //     hasDownvoted,
-        //     path: pathname,
-        //   });
+        await downvoteAnswer({
+          answerId: JSON.parse(itemId),
+          userId: JSON.parse(userId),
+          hasUpvoted,
+          hasDownvoted,
+          path: pathname,
+        });
       }
     }
   };
@@ -122,18 +123,20 @@ const Votes = ({
             </div>
           </div>
         </div>
-        <Image
-          src={
-            hasSaved
-              ? "/assets/icons/star-filled.svg"
-              : "/assets/icons/star-red.svg"
-          }
-          alt="star"
-          width={18}
-          height={18}
-          className="cursor-pointer"
-          onClick={() => handleSave()}
-        />
+        {type === "Question" && (
+          <Image
+            src={
+              hasSaved
+                ? "/assets/icons/star-filled.svg"
+                : "/assets/icons/star-red.svg"
+            }
+            alt="star"
+            width={18}
+            height={18}
+            className="cursor-pointer"
+            onClick={() => handleSave()}
+          />
+        )}
       </div>
     </div>
   );
