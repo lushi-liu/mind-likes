@@ -24,7 +24,7 @@ const page = async ({ params, searchParams }) => {
   }
   return (
     <>
-      <div className="flex-start w-full flex-col">
+      <div className="flex-start w-full flex-col ">
         <div className="flex w-full flex-col-reverse justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
           <Link
             href={`profile/${result.author.clerkId}`}
@@ -58,7 +58,7 @@ const page = async ({ params, searchParams }) => {
       <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
         {result.title}
       </h2>
-      <div className="mb-8 mt-5 flex flex-wrap gap-4">
+      <div className="mb-8 mt-5 flex flex-wrap gap-4 ">
         <Metric
           imgUrl="/assets/icons/clock.svg"
           alt="upvotes"
