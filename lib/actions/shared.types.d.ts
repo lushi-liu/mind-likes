@@ -46,6 +46,20 @@ export interface GetAllUsersParams {
   searchQuery?: string;
 }
 
+export interface ToggleSaveQuestionParams {
+  userId: string;
+  questionId: string;
+  path: string;
+}
+
+export interface GetSavedQuestionsParams {
+  clerkId: string;
+  page?: number;
+  pageSize?: number;
+  filer?: string;
+  searchQuery?: string;
+}
+
 export interface GetTopInteractedTagsParams {
   userId: string;
   limit?: number;
@@ -53,4 +67,39 @@ export interface GetTopInteractedTagsParams {
 
 export interface GetQuestionByIdParams {
   questionId: string;
+}
+
+export interface QuestionVoteParams {
+  questionId: string;
+  userId: string;
+  hasUpvoted: boolean;
+  hasDownvoted: boolean;
+  path: string;
+}
+
+export interface DeleteQuestionParams {
+  questionId: string;
+  path: string;
+}
+
+export interface CreateAnswerParams {
+  content: string;
+  author: string;
+  question: string;
+  path: string;
+}
+
+export interface GetAnswersParams {
+  questionId: string;
+  sortBy?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface AnswerVoteParams {
+  answerId: string;
+  userId: string;
+  hasUpvoted: boolean;
+  hasDownvoted: boolean;
+  path: string;
 }
