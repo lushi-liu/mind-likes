@@ -108,3 +108,10 @@ export interface ViewQuestionParams {
   questionId: string;
   userId: string | undefined;
 }
+
+export interface GetQuestionByTagIdParams {
+  tagId: string;
+  searchQuery?: string;
+  page?: number;
+  pageSize?: number;
+}
