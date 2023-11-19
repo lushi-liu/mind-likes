@@ -211,6 +211,7 @@ export async function getUserAnswers(params: GetUserStatsParams) {
     throw error;
   }
 }
+
 // export async function getAllUsers(params: DeleteUserParams) {
 //   try {
 //     connectToDatabase()
