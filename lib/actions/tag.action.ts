@@ -3,7 +3,8 @@
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
 import {
-  GetQuestionByTagIdParams,
+  GetAllTagsParams,
+  GetQuestionsByTagIdParams,
   GetTopInteractedTagsParams,
 } from "./shared.types";
 import Tag, { ITag } from "@/database/tag.model";
@@ -35,11 +36,19 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   }
 }
 
-export async function getAllTags(params: getAllTagsParams) {
+export async function getAllTags(params: GetAllTagsParams) {
   try {
     connectToDatabase();
 
-    const tags = await Tag.find({});
+    const { searchQuery } = params;
+
+    const query: FilterQuery<typeof Tag> = {};
+
+    if (searchQuery) {
+      query.$or = [{ name: { $regex: new RegExp(searchQuery, "i") } }];
+    }
+
+    const tags = await Tag.find(query);
 
     return { tags };
   } catch (error) {
@@ -48,7 +57,7 @@ export async function getAllTags(params: getAllTagsParams) {
   }
 }
 
-export async function getQuestionsByTagId(params: GetQuestionByTagIdParams) {
+export async function getQuestionsByTagId(params: GetQuestionsByTagIdParams) {
   try {
     connectToDatabase();
 
