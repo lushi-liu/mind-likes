@@ -321,7 +321,7 @@ export async function getUserInfo(params: GetUserByIdParams) {
 export async function getUserQuestions(params: GetUserStatsParams) {
   try {
     connectToDatabase();
-    const { userId, page = 1, pageSize = 10 } = params;
+    const { userId, page = 1, pageSize = 5 } = params;
     const skipAmount = (page - 1) * pageSize;
     const totalQuestions = await Question.countDocuments({ author: userId });
     const userQuestions = await Question.find({ author: userId })
@@ -343,7 +343,7 @@ export async function getUserQuestions(params: GetUserStatsParams) {
 export async function getUserAnswers(params: GetUserStatsParams) {
   try {
     connectToDatabase();
-    const { userId, page = 1, pageSize = 1 } = params;
+    const { userId, page = 1, pageSize = 5 } = params;
     const skipAmount = (page - 1) * pageSize;
     const totalAnswers = await Answer.countDocuments({ author: userId });
     const userAnswers = await Answer.find({ author: userId })

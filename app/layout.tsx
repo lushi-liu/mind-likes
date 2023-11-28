@@ -20,8 +20,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "DevFlow",
-  description: "enter description",
+  title: "MindLikes",
+  description:
+    "MindLikes is a community of over 100,000 developers. Join us to become part of those that think alike!",
   icons: {
     icon: "/assets/images/site-logo.svg",
   },

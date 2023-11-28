@@ -6,7 +6,6 @@ import { UserFilters } from "@/constants/filters";
 import { getAllUsers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import React from "react";
-import Loading from "./loading";
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
