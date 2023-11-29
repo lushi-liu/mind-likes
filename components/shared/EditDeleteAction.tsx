@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { deleteAnswer } from "@/lib/actions/answer.action";
 import { deleteQuestion } from "@/lib/actions/question.action";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   type: string;
