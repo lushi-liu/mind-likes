@@ -11,6 +11,10 @@ export async function viewQuestion(params: ViewQuestionParams) {
     const { questionId, userId } = params;
 
     const question = await Question.findById(questionId);
+    if (!question) {
+      console.log("Question not found");
+      return;
+    }
 
     // Update View Count
     await Question.findByIdAndUpdate(questionId, {
@@ -23,7 +27,11 @@ export async function viewQuestion(params: ViewQuestionParams) {
         action: "view",
         question: questionId,
       });
-      if (existingInteraction) return console.log("User has already viewed");
+
+      if (existingInteraction) {
+        console.log("User has already viewed this question");
+        return;
+      }
       await Interaction.create({
         user: userId,
         action: "view",
