@@ -45,8 +45,8 @@ export async function globalSearch(params: SearchParams) {
               type === "user"
                 ? item.clerkId
                 : type === "answer"
-                ? item.question
-                : item._id,
+                  ? item.question
+                  : item._id,
           }))
         );
       }
@@ -68,8 +68,8 @@ export async function globalSearch(params: SearchParams) {
           type === "user"
             ? item.clerkId
             : type === "answer"
-            ? item.question
-            : item._id,
+              ? item.question
+              : item._id,
       }));
     }
     return JSON.stringify(results);
@@ -108,6 +108,7 @@ export async function getRecommendedQuestions(params: RecommendedParams) {
 
     // Get distinct tag IDs from user's interactions
     const distinctUserTagIds = [
+      // @ts-ignore
       ...new Set(userTags.map((tag: any) => tag._id)),
     ];
 
