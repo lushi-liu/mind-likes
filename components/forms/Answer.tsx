@@ -18,6 +18,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { usePathname } from "next/navigation";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   question: string;
@@ -40,6 +41,11 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   const editorRef = React.useRef(null);
 
   const handleCreateAnswer = async (values: z.infer<typeof AnswerSchema>) => {
+    if (!authorId)
+      return toast({
+        title: "Please log in",
+        description: "You must be logged in to post an Answer!",
+      });
     setIsSubmitting(true);
     try {
       await createAnswer({
